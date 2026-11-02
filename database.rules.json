@@ -1,0 +1,35 @@
+{
+  "rules": {
+    ".read": false,
+    ".write": false,
+    "players": {
+      "$uid": {
+        ".read": "auth != null && auth.uid === $uid",
+        ".write": "auth != null && auth.uid === $uid"
+      }
+    },
+    "board": {
+      ".indexOn": ["total"],
+      ".read": true,
+      "$uid": {
+        ".write": "auth != null && auth.uid === $uid",
+        ".validate": "newData.hasChildren(['name','total'])",
+        "name":  { ".validate": "newData.isString() && newData.val().length <= 14" },
+        "total": { ".validate": "newData.isNumber() && newData.val() >= 0 && newData.val() <= 1000000" },
+        "wish":  { ".validate": "newData.isString() && newData.val().length <= 40" },
+        "$other": { ".validate": true }
+      }
+    },
+    "online": {
+      ".indexOn": ["t"],
+      ".read": true,
+      "$uid": {
+        ".write": "auth != null && auth.uid === $uid",
+        ".validate": "newData.hasChildren(['n','t'])",
+        "n": { ".validate": "newData.isString() && newData.val().length <= 14" },
+        "c": { ".validate": "newData.isString() && newData.val().length <= 40" },
+        "$other": { ".validate": true }
+      }
+    }
+  }
+}
