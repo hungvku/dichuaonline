@@ -425,7 +425,7 @@ if(incT>0)incT-=dt;if(bT>0)bT-=dt;if(incT>3||bT>0)[486,500,514].forEach(x=>{if(M
 smk.forEach(p=>{p.x+=p.vx*dt+Math.sin(t*2+p.y*.1)*.2;p.y+=p.vy*dt;p.l-=dt*.35;p.r+=dt*4});for(let i=smk.length-1;i>=0;i--)if(smk[i].l<=0)smk.splice(i,1);
 pet.forEach(p=>{p.y+=p.vy*dt;p.x+=Math.sin(t*1.3+p.ph)*20*dt;p.rot+=dt;if(p.y>H+20){if(p.tmp)p.dead=1;else{p.y=-20;p.x=rd()*W}}});for(let i=pet.length-1;i>=0;i--)if(pet[i].dead)pet.splice(i,1);
 swing=Math.max(0,swing-dt*.5);flash=Math.max(0,flash-dt*3);
-S=sc?Math.min(W/660,H/760):S0;const vw=W/S,vh=H/S,tx=sc?500-vw/2:vw>=1000?(1000-vw)/2:clamp(P.x-vw/2,0,1000-vw),ty=sc?(vh>=1160?(1100-vh)/2:clamp(P.y-vh*.55,-60,1100-vh)):vh>=800?(800-vh)/2:clamp(P.y-vh*.58,0,800-vh);cx+=(tx-cx)*Math.min(1,dt*6);cy+=(ty-cy)*Math.min(1,dt*6);
+S=sc?Math.min(W/740,H/760):S0;const vw=W/S,vh=H/S,tx=sc?500-vw/2:vw>=1000?(1000-vw)/2:clamp(P.x-vw/2,0,1000-vw),ty=sc?(vh>=1160?(1100-vh)/2:clamp(P.y-vh*.55,-60,1100-vh)):vh>=800?(800-vh)/2:clamp(P.y-vh*.58,0,800-vh);cx+=(tx-cx)*Math.min(1,dt*6);cy+=(ty-cy)*Math.min(1,dt*6);
 const tdk=mode==='day'?0:mode==='night'?1:clamp(.5-1.1*Math.cos(t*.0628),0,1);dk+=(tdk-dk)*Math.min(1,dt*1.5)}
 /* ===== drawing ===== */
 const rr=(x,y,w,h,r,f)=>{g.beginPath();g.roundRect(x,y,w,h,r);g.fillStyle=f;g.fill()};
